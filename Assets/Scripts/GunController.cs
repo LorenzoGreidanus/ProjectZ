@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform weaponLocation;
+    public Gun startingGun;
+    Gun equipedGun;
+
+    private void Start()
     {
-        
+        if(startingGun != null)
+        {
+            EquipWeapon(startingGun);
+        }
+    }
+    public void EquipWeapon(Gun gunToEquip)
+    {
+        if(equipedGun != null)
+        {
+            Destroy(equipedGun.gameObject);
+        }
+        equipedGun = Instantiate(gunToEquip, weaponLocation.position, weaponLocation.rotation) as Gun;
+        equipedGun.transform.parent = weaponLocation;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot()
     {
-        
+        if(equipedGun != null)
+        {
+            equipedGun.Shoot();
+        }
     }
 }
