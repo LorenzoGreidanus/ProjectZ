@@ -8,6 +8,8 @@ public class Vitals : MonoBehaviour, Damagable
     protected float health;
     protected bool death;
 
+    public event System.Action OnDeath;
+
     protected virtual void Start()
     {
         health = startHealth;
@@ -26,6 +28,10 @@ public class Vitals : MonoBehaviour, Damagable
     protected void Die()
     {
         death = true;
+        if(OnDeath != null)
+        {
+            OnDeath();
+        }
         GameObject.Destroy(gameObject);
     }
 }
