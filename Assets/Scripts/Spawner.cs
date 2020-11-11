@@ -8,15 +8,20 @@ public class Spawner : MonoBehaviour
     public Enemy enemy;
 
     wave currentWave;
+    [SerializeField]
     int currentWaveNum;
 
+    public UIManager manager;
+
     int toSpawn;
+
+    [SerializeField]
     int enemiesRemaining;
     float nextSpawnTimer;
 
     public void Start()
     {
-        NextWave();
+        //NextWave();
     }
 
     public void Update()
@@ -37,7 +42,9 @@ public class Spawner : MonoBehaviour
 
         if(enemiesRemaining == 0)
         {
-            NextWave();
+            manager.EnableDaysScreen();
+            manager.SetDayNumber(currentWaveNum + 1);
+            print(currentWaveNum);
         }
     }
 
