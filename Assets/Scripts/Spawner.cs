@@ -44,7 +44,6 @@ public class Spawner : MonoBehaviour
         {
             manager.EnableDaysScreen();
             manager.SetDayNumber(currentWaveNum + 1);
-            print(currentWaveNum);
         }
     }
 
