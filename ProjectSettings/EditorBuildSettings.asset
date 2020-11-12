@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SimpleTown/DemoScene/SimpleTown_DemoScene.unity
+    path: Assets/SimpleTown/DemoScene/MainScene.unity
     guid: 21ba8959b0b9c5e41889da424bb00b0b
   m_configObjects: {}
