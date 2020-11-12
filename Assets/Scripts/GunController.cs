@@ -35,7 +35,7 @@ public class GunController : MonoBehaviour
         if(equipedGun != null)
         {
             equipedGun.Shoot();
-            anim.SetBool("Shoot_b", false);
+            //anim.SetBool("Shoot_b", false);
         }
     }
 }
