@@ -7,15 +7,15 @@ public class Spawner : MonoBehaviour
     public wave[] waves;
     public Enemy enemy;
 
+    public GameObject[] spawners;
+
     wave currentWave;
-    [SerializeField]
     int currentWaveNum;
 
     public UIManager manager;
 
     int toSpawn;
 
-    [SerializeField]
     int enemiesRemaining;
     float nextSpawnTimer;
 
@@ -26,12 +26,15 @@ public class Spawner : MonoBehaviour
 
     public void Update()
     {
+        //Hier ergens een bug???
         if(toSpawn > 0 && Time.time > nextSpawnTimer)
         {
             toSpawn--;
             nextSpawnTimer = Time.time + currentWave.timeBetweenSpawns;
 
-            Enemy spawnedEnemy = Instantiate(enemy, gameObject.transform.position, Quaternion.identity) as Enemy;
+            int whereToSpawn = Random.Range(0,spawners.Length);
+
+            Enemy spawnedEnemy = Instantiate(enemy, spawners[whereToSpawn].transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
         }
     }

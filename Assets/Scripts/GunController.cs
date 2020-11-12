@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class GunController : MonoBehaviour
 {
     public Transform weaponLocation;
     public Gun startingGun;
     Gun equipedGun;
 
+    private Animator anim;
+
     private void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
         if(startingGun != null)
         {
             EquipWeapon(startingGun);
+            anim.SetInteger("WeaponType_int", 1);
         }
     }
     public void EquipWeapon(Gun gunToEquip)
@@ -30,6 +35,7 @@ public class GunController : MonoBehaviour
         if(equipedGun != null)
         {
             equipedGun.Shoot();
+            anim.SetBool("Shoot_b", false);
         }
     }
 }

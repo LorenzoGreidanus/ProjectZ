@@ -9,7 +9,14 @@ public class Gun : MonoBehaviour
     public float rateOfFire = 100;
     public float muzzleVelocity = 35;
 
+    private Animator anim;
+
     float timeTillNextShot;
+
+    public void Start()
+    {
+        anim = gameObject.GetComponentInParent<Animator>();
+    }
 
     public void Shoot()
     {
@@ -18,6 +25,7 @@ public class Gun : MonoBehaviour
             timeTillNextShot = Time.time + rateOfFire / 1000;
             Projectile newProjectile = Instantiate(bullet, muzzle.position, muzzle.rotation) as Projectile;
             newProjectile.SetSpeed(muzzleVelocity);
+            //anim.SetBool("Shoot_b", true);
         }
     }
 }

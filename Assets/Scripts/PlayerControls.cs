@@ -11,9 +11,12 @@ public class PlayerControls : Vitals
     PlayerController controller;
     GunController gunController;
 
+    private Animator anim;
+
     protected override void Start()
     {
         base.Start();
+        anim = gameObject.GetComponent<Animator>();
         controller = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
         //playerCam = Camera.main;
