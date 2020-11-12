@@ -19,7 +19,6 @@ public class PlayerControls : Vitals
         anim = gameObject.GetComponent<Animator>();
         controller = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
-        //playerCam = Camera.main;
     }
 
     void Update()

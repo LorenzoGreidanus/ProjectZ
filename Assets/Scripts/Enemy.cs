@@ -9,6 +9,8 @@ public class Enemy : Vitals
     public enum State {Idle, Chasing, Attacking};
     State currentState;
 
+    public ParticleSystem deathEffect;
+
     NavMeshAgent pathfinding;
     Transform target;
 
@@ -48,6 +50,15 @@ public class Enemy : Vitals
         }
 
         StartCoroutine("UpdatePath");
+    }
+
+    public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
+    {
+        if(damage >= health)
+        {
+            Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.startLifetime);
+        }
+        base.TakeHit(damage, hitPoint, hitDirection);
     }
 
     public void OnTargetDeath()

@@ -21,12 +21,12 @@ public class Spawner : MonoBehaviour
 
     public void Start()
     {
+        //Absolute
         //NextWave();
     }
 
     public void Update()
     {
-        //Hier ergens een bug???
         if(toSpawn > 0 && Time.time > nextSpawnTimer)
         {
             toSpawn--;
@@ -43,6 +43,8 @@ public class Spawner : MonoBehaviour
     {
         enemiesRemaining--;
 
+        manager.UpdateZombiesLeft(enemiesRemaining);
+
         if(enemiesRemaining == 0)
         {
             manager.EnableDaysScreen();
@@ -58,6 +60,7 @@ public class Spawner : MonoBehaviour
             currentWave = waves[currentWaveNum - 1];
             toSpawn = currentWave.enemyCount;
             enemiesRemaining = toSpawn;
+            manager.UpdateZombiesLeft(enemiesRemaining);
         }
 
     }

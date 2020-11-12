@@ -9,12 +9,17 @@ public class Gun : MonoBehaviour
     public float rateOfFire = 100;
     public float muzzleVelocity = 35;
 
+    public Transform shellEject;
+    public Transform shell;
+    MuzzleEffects muzzleEffect;
+
     private Animator anim;
 
     float timeTillNextShot;
 
     public void Start()
     {
+        muzzleEffect = GetComponent<MuzzleEffects>();
         anim = gameObject.GetComponentInParent<Animator>();
     }
 
@@ -27,6 +32,9 @@ public class Gun : MonoBehaviour
             newProjectile.SetSpeed(muzzleVelocity);
 
             anim.SetBool("Shoot_b", true);
+
+            Instantiate(shell, shellEject.position, shellEject.rotation);
+            muzzleEffect.Activate();
         }
     }
 
