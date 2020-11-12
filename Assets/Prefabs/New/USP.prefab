@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzle: {fileID: 3877008590944857396}
   bullet: {fileID: 2352804735652711751, guid: 3abaa1aa3577a19469ab0be062d35d5a, type: 3}
-  rateOfFire: 500
+  rateOfFire: 800
   muzzleVelocity: 80
 --- !u!1 &2910246148345276381
 GameObject:

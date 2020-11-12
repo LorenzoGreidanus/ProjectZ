@@ -25,7 +25,13 @@ public class Gun : MonoBehaviour
             timeTillNextShot = Time.time + rateOfFire / 1000;
             Projectile newProjectile = Instantiate(bullet, muzzle.position, muzzle.rotation) as Projectile;
             newProjectile.SetSpeed(muzzleVelocity);
-            //anim.SetBool("Shoot_b", true);
+
+            anim.SetBool("Shoot_b", true);
         }
+    }
+
+    public void LateUpdate()
+    {
+        anim.SetBool("Shoot_b", false);
     }
 }

@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            anim.SetFloat("Speed_f", 0.75f);
+            anim.SetFloat("Speed_f", 0.5f);
         }
     }
 }
