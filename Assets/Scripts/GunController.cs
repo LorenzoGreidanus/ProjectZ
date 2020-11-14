@@ -30,12 +30,19 @@ public class GunController : MonoBehaviour
         equipedGun.transform.parent = weaponLocation;
     }
 
-    public void Shoot()
+    public void OnMouseHold()
     {
         if(equipedGun != null)
         {
-            equipedGun.Shoot();
-            //anim.SetBool("Shoot_b", false);
+            equipedGun.OnTriggerHold();
+        }
+    }
+
+    public void OnMouseRelease()
+    {
+        if (equipedGun != null)
+        {
+            equipedGun.OnTriggerRelease();
         }
     }
 }

@@ -27,29 +27,45 @@ public class Enemy : Vitals
 
     bool hasTarget;
 
+    private void Awake()
+    {
+        if (GameObject.FindGameObjectWithTag("Player").transform != null)
+        {
+            hasTarget = true;
+
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            targetVitals = target.GetComponent<Vitals>();
+
+
+            myCollision = GetComponent<CapsuleCollider>().radius;
+            targetCollision = GetComponent<CapsuleCollider>().radius;
+        }
+    }
+
     protected override void Start()
     {
         base.Start();
         pathfinding = GetComponent<NavMeshAgent>();
 
 
-        if(GameObject.FindGameObjectWithTag("Player").transform != null)
+        if(hasTarget)
         {
             currentState = State.Chasing;
-            hasTarget = true;
-
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-            targetVitals = target.GetComponent<Vitals>();
-
             targetVitals.OnDeath += OnTargetDeath;
-
-            myCollision = GetComponent<CapsuleCollider>().radius;
-            targetCollision = GetComponent<CapsuleCollider>().radius;
 
             StartCoroutine("UpdatePath");
         }
 
         StartCoroutine("UpdatePath");
+    }
+
+    public void SetCharacteristics(float damage, float enemyHealth)
+    {
+        if (hasTarget)
+        {
+            damage = Mathf.Ceil(targetVitals.startHealth / damage);
+        }
+        startHealth = enemyHealth;
     }
 
     public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)

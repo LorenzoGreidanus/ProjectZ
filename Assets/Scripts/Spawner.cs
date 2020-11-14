@@ -19,15 +19,9 @@ public class Spawner : MonoBehaviour
     int enemiesRemaining;
     float nextSpawnTimer;
 
-    public void Start()
-    {
-        //Absolute
-        //NextWave();
-    }
-
     public void Update()
     {
-        if(toSpawn > 0 && Time.time > nextSpawnTimer)
+        if(toSpawn > 0 || currentWave.infiniteMode && Time.time > nextSpawnTimer)
         {
             toSpawn--;
             nextSpawnTimer = Time.time + currentWave.timeBetweenSpawns;
@@ -36,6 +30,7 @@ public class Spawner : MonoBehaviour
 
             Enemy spawnedEnemy = Instantiate(enemy, spawners[whereToSpawn].transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
+            spawnedEnemy.SetCharacteristics(currentWave.hitsToKill, currentWave.enemyHealth);
         }
     }
 
@@ -68,7 +63,11 @@ public class Spawner : MonoBehaviour
     [System.Serializable]
     public class wave
     {
+        public bool infiniteMode;
         public int enemyCount;
         public float timeBetweenSpawns;
+
+        public int hitsToKill;
+        public float enemyHealth;
     }
 }

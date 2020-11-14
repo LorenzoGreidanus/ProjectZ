@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     public float damage = 1;
     float speed = 10f;
 
+    public Color trailColor;
+
     float lifeTime = 5;
     float bulletCorrection = 0.1f;
 
@@ -20,6 +22,8 @@ public class Projectile : MonoBehaviour
         {
             OnHitObjects(initialCollsion[0], transform.position);
         }
+
+        GetComponent<TrailRenderer>().startColor = trailColor;
     }
 
     public void SetSpeed(float newSpeed)

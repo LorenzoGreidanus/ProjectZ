@@ -40,7 +40,12 @@ public class PlayerControls : Vitals
 
         if (Input.GetMouseButton(0))
         {
-            gunController.Shoot();
+            gunController.OnMouseHold();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            gunController.OnMouseRelease();
         }
     }
 }
