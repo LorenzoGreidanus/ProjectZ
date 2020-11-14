@@ -11,6 +11,8 @@ public class PlayerControls : Vitals
     PlayerController controller;
     GunController gunController;
 
+    public Transform crosshair;
+
     private Animator anim;
 
     protected override void Start()
@@ -28,14 +30,14 @@ public class PlayerControls : Vitals
         controller.Move(moveVelocity);
 
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.up * gunController.GunHeight());
         float rayDist;
 
         if(groundPlane.Raycast(ray, out rayDist))
         {
             Vector3 point = ray.GetPoint(rayDist);
-            //Debug.DrawLine(ray.origin, point, Color.red);
             controller.LookAt(point);
+            crosshair.position = point;
         }
 
         if (Input.GetMouseButton(0))
