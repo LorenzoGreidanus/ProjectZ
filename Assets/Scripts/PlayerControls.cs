@@ -33,11 +33,17 @@ public class PlayerControls : Vitals
         Plane groundPlane = new Plane(Vector3.up, Vector3.up * gunController.GunHeight());
         float rayDist;
 
-        if(groundPlane.Raycast(ray, out rayDist))
+        if (groundPlane.Raycast(ray, out rayDist))
         {
             Vector3 point = ray.GetPoint(rayDist);
             controller.LookAt(point);
             crosshair.position = point;
+
+            if((new Vector2(point.x, point.z) - new Vector2(transform.position.x, transform.position.z)).sqrMagnitude > 1)
+            {
+                gunController.Aim(point);
+            }
+
         }
 
         if (Input.GetMouseButton(0))
