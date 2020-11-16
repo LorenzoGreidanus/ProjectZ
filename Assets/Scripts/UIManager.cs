@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -36,6 +37,16 @@ public class UIManager : MonoBehaviour
             fadePanel.color = Color.Lerp(from, to, percent);
             yield return null;
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void UpdateText()

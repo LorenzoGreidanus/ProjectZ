@@ -14,6 +14,8 @@ public class Enemy : Vitals
     NavMeshAgent pathfinding;
     Transform target;
 
+    public GameObject[] skinToChoose;
+
     Vitals targetVitals;
 
     float attackDistance = 1.5f;
@@ -40,6 +42,12 @@ public class Enemy : Vitals
             myCollision = GetComponent<CapsuleCollider>().radius;
             targetCollision = GetComponent<CapsuleCollider>().radius;
         }
+
+        int skinIndex;
+
+        skinIndex = Random.Range(0, skinToChoose.Length);
+
+        skinToChoose[skinIndex].gameObject.SetActive(true);
     }
 
     protected override void Start()
