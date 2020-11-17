@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20ce3ddbeeaef04c915e670fcc62d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireMode: 2
+  fireMode: 0
   muzzle:
   - {fileID: 3877008590944857396}
   bullet: {fileID: 2352804735652711751, guid: 3abaa1aa3577a19469ab0be062d35d5a, type: 3}

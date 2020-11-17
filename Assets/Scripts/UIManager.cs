@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
     public Image fadePanel;
 
+    public GameObject crosshair;
+
     public TextMeshProUGUI daysSurvivedText;
     public TextMeshProUGUI zombiesLeft;
 
@@ -19,10 +21,31 @@ public class UIManager : MonoBehaviour
 
     private int dayNum;
 
+    public GameObject shop;
+    public Camera mainCamera;
+
     public void Start()
     {
         daysSurvivedText = daysSurvived.GetComponentInChildren<TextMeshProUGUI>();
         zombiesLeft = zombiesLeftG.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    public void ShopEnable()
+    {
+        StartCoroutine(Fade(Color.black, Color.clear, 1));
+        daysSurvived.SetActive(false);
+        shop.SetActive(true);
+        crosshair.SetActive(false);
+        mainCamera.enabled = false;
+    }
+
+    public void ShopDisable()
+    {
+        StartCoroutine(Fade(Color.clear, Color.black, 1));
+        daysSurvived.SetActive(true);
+        crosshair.SetActive(true);
+        shop.SetActive(false);
+        mainCamera.enabled = true;
     }
 
     IEnumerator Fade(Color from, Color to, float time)
