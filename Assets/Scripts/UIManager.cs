@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(Fade(Color.clear, Color.black, 1));
         daysSurvived.SetActive(true);
         zombiesLeftG.SetActive(false);
+        Cursor.visible = true;
     }
 
     public void DisableDaysScreen()
@@ -100,5 +101,6 @@ public class UIManager : MonoBehaviour
         StartCoroutine(Fade(Color.black, Color.clear, 1));
         daysSurvived.SetActive(false);
         zombiesLeftG.SetActive(true);
+        Cursor.visible = false;
     }
 }
