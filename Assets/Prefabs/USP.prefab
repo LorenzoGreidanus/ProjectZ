@@ -432,6 +432,7 @@ MonoBehaviour:
   rateOfFire: 400
   muzzleVelocity: 80
   burstAmount: 0
+  totalMagSize: 12
   shellEject: {fileID: 1046385152882593504}
   shell: {fileID: 3241195534273373011, guid: 2d3a44d844715c04984954738282e166, type: 3}
 --- !u!114 &6243801227204530204

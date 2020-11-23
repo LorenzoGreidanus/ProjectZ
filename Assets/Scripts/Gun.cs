@@ -15,6 +15,11 @@ public class Gun : MonoBehaviour
     public int burstAmount;
     int burstShotsLeft;
 
+    bool isReloading;
+    [SerializeField]
+    int bulletsLeft;
+    public int totalMagSize;
+
     public Transform shellEject;
     public Transform shell;
     MuzzleEffects muzzleEffect;
@@ -33,9 +38,17 @@ public class Gun : MonoBehaviour
         burstShotsLeft = burstAmount;
     }
 
+    public void FixedUpdate()
+    {
+        if(!isReloading && bulletsLeft == 0)
+        {
+            StartCoroutine("Reload");
+        }
+    }
+
     void Shoot()
     {
-        if(Time.time > timeTillNextShot)
+        if(!isReloading && bulletsLeft > 0 && Time.time > timeTillNextShot)
         {
 
             if(fireMode == FireModes.Burst)
@@ -54,6 +67,10 @@ public class Gun : MonoBehaviour
 
             for (int i = 0; i < muzzle.Length; i++)
             {
+                if (bulletsLeft == 0)
+                    break;
+
+                bulletsLeft--;
                 timeTillNextShot = Time.time + rateOfFire / 1000;
                 Projectile newProjectile = Instantiate(bullet, muzzle[i].position, muzzle[i].rotation) as Projectile;
                 newProjectile.SetSpeed(muzzleVelocity);
@@ -61,6 +78,17 @@ public class Gun : MonoBehaviour
             Instantiate(shell, shellEject.position, shellEject.rotation);
             muzzleEffect.Activate();
         }
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        anim.SetBool("Reload_b", true);
+        yield return new WaitForSeconds(1.5f);
+
+        anim.SetBool("Reload_b", false);
+        isReloading = false;
+        bulletsLeft = totalMagSize;
     }
 
     public void Aim(Vector3 aimPoint)
