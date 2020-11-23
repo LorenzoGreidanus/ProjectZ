@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     private int dayNum;
 
+    public GameObject spawner;
+
     public GameObject shop;
     public Camera mainCamera;
 
@@ -28,6 +30,8 @@ public class UIManager : MonoBehaviour
     {
         daysSurvivedText = daysSurvived.GetComponentInChildren<TextMeshProUGUI>();
         zombiesLeft = zombiesLeftG.GetComponentInChildren<TextMeshProUGUI>();
+        spawner = GameObject.FindGameObjectWithTag("SpawnManager");
+        spawner.SetActive(false);
     }
 
     public void ShopEnable()
@@ -94,6 +98,7 @@ public class UIManager : MonoBehaviour
         daysSurvived.SetActive(true);
         zombiesLeftG.SetActive(false);
         Cursor.visible = true;
+        spawner.SetActive(false);
     }
 
     public void DisableDaysScreen()
@@ -102,5 +107,6 @@ public class UIManager : MonoBehaviour
         daysSurvived.SetActive(false);
         zombiesLeftG.SetActive(true);
         Cursor.visible = false;
+        spawner.SetActive(true);
     }
 }
