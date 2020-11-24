@@ -1,7 +1,6 @@
-# ProjectZ
+# 30 Days Till Hell
 
-How to install:
+How to get to the Build:
 
-Step 1. Download the project from this Git. 
-
-Step 2. Go into the Build folder and find the .exe and run it.
+Step 1. Go to this Google Drive. 
+Step 2. Unzip the file and then run it from the .exe
