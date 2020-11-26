@@ -7,6 +7,8 @@ public class Shop : MonoBehaviour
     public Camera camera;
     public LayerMask gunLayer;
 
+    private GameObject player;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -14,9 +16,13 @@ public class Shop : MonoBehaviour
             RaycastHit hit;
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, gunLayer))
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, gunLayer, QueryTriggerInteraction.Collide))
             {
-                //Gun equippen die gehit is.
+                if(player == null)
+                {
+                    player = GameObject.FindGameObjectWithTag("Player");
+                }
+                player.GetComponent<GunController>().ShopGun(hit.transform.GetComponent<Gun>().gunIndex);
             }
         }
     }

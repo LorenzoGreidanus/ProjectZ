@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public LayerMask collisionMask;
-    public float damage = 1;
+    private float damage = 1;
     float speed = 10f;
 
     public Color trailColor;
@@ -29,6 +29,11 @@ public class Projectile : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    public void Damage(int _damage)
+    {
+        damage = _damage;
     }
 
     void Update()
