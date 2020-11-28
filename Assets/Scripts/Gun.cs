@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     public int burstAmount;
     private int burstShotsLeft;
     public int totalMagSize;
+    public int gunCost;
 
     [Header("Shop Stats")]
     public int cost;

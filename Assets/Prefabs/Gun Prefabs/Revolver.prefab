@@ -587,15 +587,16 @@ MonoBehaviour:
   muzzle:
   - {fileID: 7668775215398451}
   bullet: {fileID: 2352804735652711751, guid: 3abaa1aa3577a19469ab0be062d35d5a, type: 3}
-  rateOfFire: 800
-  muzzleVelocity: 60
-  gunIndex: 1
-  damage: 3
-  burstAmount: 0
-  bulletsLeft: 6
-  totalMagSize: 6
   shellEject: {fileID: 3838080220181838896}
   shell: {fileID: 3241195534273373011, guid: 2d3a44d844715c04984954738282e166, type: 3}
+  rateOfFire: 800
+  muzzleVelocity: 60
+  burstAmount: 0
+  totalMagSize: 6
+  gunCost: 60
+  cost: 0
+  gunIndex: 1
+  damage: 3
 --- !u!114 &7180799857578380947
 MonoBehaviour:
   m_ObjectHideFlags: 0

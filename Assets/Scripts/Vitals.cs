@@ -33,10 +33,7 @@ public class Vitals : MonoBehaviour, Damagable
     protected void Die()
     {
         death = true;
-        if(OnDeath != null)
-        {
-            OnDeath();
-        }
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }
