@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
 
     int toSpawn;
 
+    public bool canStart = false;
+
     int enemiesRemaining;
     float nextSpawnTimer;
 
@@ -30,7 +32,8 @@ public class Spawner : MonoBehaviour
 
             Enemy spawnedEnemy = Instantiate(enemy, spawners[whereToSpawn].transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
-            spawnedEnemy.SetCharacteristics(currentWave.hitsToKill, currentWave.enemyHealth);
+
+            spawnedEnemy.SetCharacteristics(currentWave.hitsToKill, currentWave.enemyHealth); //In Build gives Error.
         }
     }
 
@@ -57,7 +60,6 @@ public class Spawner : MonoBehaviour
             enemiesRemaining = toSpawn;
             manager.UpdateZombiesLeft(enemiesRemaining);
         }
-
     }
 
     [System.Serializable]

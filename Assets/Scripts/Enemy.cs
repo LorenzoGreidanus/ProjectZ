@@ -12,10 +12,12 @@ public class Enemy : Vitals
     public ParticleSystem deathEffect;
 
     NavMeshAgent pathfinding;
+    [SerializeField]
     Transform target;
 
     public GameObject[] skinToChoose;
 
+    [SerializeField]
     Vitals targetVitals;
 
     float attackDistance = 1.5f;
@@ -38,7 +40,6 @@ public class Enemy : Vitals
             target = GameObject.FindGameObjectWithTag("Player").transform;
             targetVitals = target.GetComponent<Vitals>();
 
-
             myCollision = GetComponent<CapsuleCollider>().radius;
             targetCollision = GetComponent<CapsuleCollider>().radius;
         }
@@ -59,7 +60,7 @@ public class Enemy : Vitals
         if(hasTarget)
         {
             currentState = State.Chasing;
-            targetVitals.OnDeath += OnTargetDeath;
+            targetVitals.OnDeath += OnTargetDeath; //In Build gives Error.
 
             StartCoroutine("UpdatePath");
         }
@@ -71,7 +72,8 @@ public class Enemy : Vitals
     {
         if (hasTarget)
         {
-            damage = Mathf.Ceil(targetVitals.startHealth / damage);
+            Debug.LogError(targetVitals);
+            _ = Mathf.Ceil(targetVitals.startHealth / damage); //In Build gives Error.
         }
         startHealth = enemyHealth;
     }
@@ -142,7 +144,7 @@ public class Enemy : Vitals
 
     IEnumerator UpdatePath()
     {
-        float refreshRate = 0.25f;
+        float refreshRate = 0.45f;
         
         while (hasTarget)
         {

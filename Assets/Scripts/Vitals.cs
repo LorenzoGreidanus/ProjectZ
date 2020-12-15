@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vitals : MonoBehaviour, Damagable
+public class Vitals : MonoBehaviour, IDamagable
 {
     public float startHealth;
     protected float health;
@@ -33,10 +33,7 @@ public class Vitals : MonoBehaviour, Damagable
     protected void Die()
     {
         death = true;
-        if(OnDeath != null)
-        {
-            OnDeath();
-        }
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }
