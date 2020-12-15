@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof (Rigidbody))]
-public class PlayController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     Rigidbody myRB;
     Vector3 velocity;

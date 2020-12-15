@@ -6,7 +6,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public Transform weaponLocation;
-    public Gun[] allGuns;
+    public Gun startingGun;
     Gun equipedGun;
 
     private Animator anim;
@@ -14,14 +14,13 @@ public class GunController : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        if (allGuns != null)
+        if(startingGun != null)
         {
-            EquipWeapon(allGuns[0]);
+            EquipWeapon(startingGun);
             anim.SetInteger("WeaponType_int", 1);
         }
     }
-
-    private void EquipWeapon(Gun gunToEquip)
+    public void EquipWeapon(Gun gunToEquip)
     {
         if(equipedGun != null)
         {
@@ -29,11 +28,6 @@ public class GunController : MonoBehaviour
         }
         equipedGun = Instantiate(gunToEquip, weaponLocation.position, weaponLocation.rotation) as Gun;
         equipedGun.transform.parent = weaponLocation;
-    }
-
-    public void ShopGun(int weaponIndex)
-    {
-        EquipWeapon(allGuns[weaponIndex]);
     }
 
     public void OnMouseHold()

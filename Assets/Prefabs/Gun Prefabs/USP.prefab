@@ -431,9 +431,7 @@ MonoBehaviour:
   bullet: {fileID: 2352804735652711751, guid: 3abaa1aa3577a19469ab0be062d35d5a, type: 3}
   rateOfFire: 400
   muzzleVelocity: 80
-  damage: 1
   burstAmount: 0
-  bulletsLeft: 0
   totalMagSize: 12
   shellEject: {fileID: 1046385152882593504}
   shell: {fileID: 3241195534273373011, guid: 2d3a44d844715c04984954738282e166, type: 3}

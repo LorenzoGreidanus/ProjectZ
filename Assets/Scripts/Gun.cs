@@ -7,31 +7,28 @@ public class Gun : MonoBehaviour
     public enum FireModes {Auto, Burst, Single};
     public FireModes fireMode;
 
-    [Header("Gun Misc")]
     public Transform[] muzzle;
     public Projectile bullet;
+    public float rateOfFire = 100;
+    public float muzzleVelocity = 35;
+
+    public int burstAmount;
+    int burstShotsLeft;
+
+    bool isReloading;
+    [SerializeField]
+    int bulletsLeft;
+    public int totalMagSize;
+
     public Transform shellEject;
     public Transform shell;
     MuzzleEffects muzzleEffect;
 
-    [Header("Gun stats")]
-    public float rateOfFire = 100;
-    public float muzzleVelocity = 35;
-    public int burstAmount;
-    private int burstShotsLeft;
-    public int totalMagSize;
-    public int gunCost;
-
-    [Header("Shop Stats")]
-    public int cost;
-    public int gunIndex;
-    public int damage;
-
-    private bool isReloading;
-    private int bulletsLeft;
     private Animator anim;
-    private float timeTillNextShot;
-    private bool mouseReleased;
+
+    float timeTillNextShot;
+
+    bool mouseReleased;
 
 
     public void Start()
@@ -77,7 +74,6 @@ public class Gun : MonoBehaviour
                 timeTillNextShot = Time.time + rateOfFire / 1000;
                 Projectile newProjectile = Instantiate(bullet, muzzle[i].position, muzzle[i].rotation) as Projectile;
                 newProjectile.SetSpeed(muzzleVelocity);
-                newProjectile.Damage(damage);
             }
             Instantiate(shell, shellEject.position, shellEject.rotation);
             muzzleEffect.Activate();

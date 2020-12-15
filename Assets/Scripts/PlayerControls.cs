@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof (PlayController))]
+[RequireComponent(typeof (PlayerController))]
 [RequireComponent(typeof (GunController))]
 public class PlayerControls : Vitals
 {
-    [Header("Variables")]
     public Camera playerCam;
     public float moveSpeed;
-    public Transform crosshair;
-
-    PlayController controller;
+    PlayerController controller;
     GunController gunController;
 
-    public float food;
+    public Transform crosshair;
 
     protected override void Start()
     {
         base.Start();
-        controller = GetComponent<PlayController>();
+        controller = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
     }
 
@@ -43,14 +40,7 @@ public class PlayerControls : Vitals
             {
                 gunController.Aim(point);
             }
-        }
 
-        void OnTriggerEnter(Collider other)
-        {
-            if(other.transform.tag == "Food")
-            {
-                food++;
-            }
         }
 
         if (Input.GetMouseButton(0))

@@ -7,25 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("Animation")]
-    public Image fadePanel;
-    public GameObject canvas;
-
-    [Header("To Update")]
-    public TextMeshProUGUI daysSurvivedText;
-    public TextMeshProUGUI zombiesLeft;
-    private int dayNum;
-
-    [Header("Enable and Disable")]
-    public GameObject spawner;
-    public Camera mainCamera;
-    public GameObject crosshair;
-
-    [Header("UI Catagory")]
     public GameObject daysSurvived;
     public GameObject zombiesLeftG;
+
+    public Image fadePanel;
+
+    public GameObject crosshair;
+
+    public TextMeshProUGUI daysSurvivedText;
+    public TextMeshProUGUI zombiesLeft;
+
+    public GameObject canvas;
+
+    private int dayNum;
+
+    public GameObject spawner;
+
     public GameObject shop;
-    public GameObject shopBack;
+    public Camera mainCamera;
 
     public void Start()
     {
@@ -42,16 +41,14 @@ public class UIManager : MonoBehaviour
         shop.SetActive(true);
         crosshair.SetActive(false);
         mainCamera.enabled = false;
-        shopBack.SetActive(true);
     }
 
     public void ShopDisable()
     {
-        StartCoroutine(Fade(Color.clear, Color.black, 0.0001f));
+        StartCoroutine(Fade(Color.clear, Color.black, 1));
         daysSurvived.SetActive(true);
         crosshair.SetActive(true);
         shop.SetActive(false);
-        shopBack.SetActive(false);
         mainCamera.enabled = true;
     }
 
