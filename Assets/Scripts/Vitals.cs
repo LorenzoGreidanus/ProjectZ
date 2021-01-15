@@ -25,7 +25,7 @@ public class Vitals : MonoBehaviour, IDamagable
         health -= damage;
 
         if (health <= 0 && !death)
-        {
+        { 
             Die();
         }
     }

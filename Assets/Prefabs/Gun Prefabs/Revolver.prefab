@@ -718,7 +718,9 @@ MonoBehaviour:
   rateOfFire: 800
   muzzleVelocity: 120
   burstAmount: 0
-  gunCost: 0
+  shootAudio: {fileID: 8300000, guid: 0b20464f34ba5b846b694b600aa0a53e, type: 3}
+  reload: {fileID: 0}
+  gunCost: 5
   gunIndex: 1
   damage: 2
   bulletsLeft: 0

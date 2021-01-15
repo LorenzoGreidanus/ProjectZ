@@ -15,6 +15,9 @@ public class Gun : MonoBehaviour
     public int burstAmount;
     int burstShotsLeft;
 
+    public AudioClip shootAudio;
+    public AudioClip reload;
+
     public int gunCost;
     public int gunIndex;
     public int damage;
@@ -81,6 +84,8 @@ public class Gun : MonoBehaviour
             }
             Instantiate(shell, shellEject.position, shellEject.rotation);
             muzzleEffect.Activate();
+
+            AudioManager.instance.PlaySound(shootAudio, transform.position);
         }
     }
 

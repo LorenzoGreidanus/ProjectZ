@@ -22,6 +22,10 @@ public class Shop : MonoBehaviour
                 {
                     player = GameObject.FindGameObjectWithTag("Player");
                 }
+                if(hit.transform.GetComponent<Gun>().gunCost > player.GetComponent<PlayerControls>().food)
+                {
+                    return;
+                }
                 player.GetComponent<GunController>().ShopGun(hit.transform.GetComponent<Gun>().gunIndex);
                 print("Succes");
             }

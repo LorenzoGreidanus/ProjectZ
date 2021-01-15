@@ -11,6 +11,10 @@ public class PlayerControls : Vitals
     PlayerController controller;
     GunController gunController;
 
+    public GameObject uiManager;
+
+    public int food;
+
     public Transform crosshair;
 
     protected override void Start()
@@ -18,6 +22,16 @@ public class PlayerControls : Vitals
         base.Start();
         controller = GetComponent<PlayerController>();
         gunController = GetComponent<GunController>();
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Food")
+        {
+            food++;
+            Destroy(collision.gameObject);
+            uiManager.GetComponent<UIManager>().UpdateFood(food);
+        }
     }
 
     void Update()

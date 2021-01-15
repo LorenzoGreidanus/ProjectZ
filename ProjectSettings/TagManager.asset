@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Enemy
   - SpawnManager
+  - Shotgun
+  - Revolver
+  - Sniper
+  - AK
+  - Uzi
+  - DubbelBarrel
+  - Smg
+  - AR-15
+  - Food
   layers:
   - Default
   - TransparentFX

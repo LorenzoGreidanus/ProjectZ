@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
             Enemy spawnedEnemy = Instantiate(enemy, spawners[whereToSpawn].transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
 
-            spawnedEnemy.SetCharacteristics(currentWave.hitsToKill, currentWave.enemyHealth); //In Build gives Error.
+            spawnedEnemy.SetCharacteristics(currentWave.hitsToKill, currentWave.enemyHealth); 
         }
     }
 

@@ -23,6 +23,9 @@ public class Enemy : Vitals
     float attackDistance = 1.5f;
     float attackRate = 1;
 
+    public GameObject food;
+    public GameObject foodDropOff;
+
     public float damage = 1;
 
     float nextAttackTime;
@@ -73,7 +76,7 @@ public class Enemy : Vitals
     {
         if (hasTarget)
         {
-            _ = Mathf.Ceil(targetVitals.startHealth / damage); //In Build gives Error.
+            _ = Mathf.Ceil(targetVitals.startHealth / damage); 
         }
         startHealth = enemyHealth;
     }
@@ -84,6 +87,20 @@ public class Enemy : Vitals
         if(damage >= health)
         {
             Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.startLifetime);
+            int spawnFood = 4;
+            int min = 1;
+            int max = 5;
+
+            int outcome;
+            outcome = Random.Range(min, max);
+
+            if (outcome == spawnFood)
+            {
+                if (food != null)
+                {
+                    Instantiate(food, gameObject.transform.position, Quaternion.identity);
+                }
+            }
         }
         base.TakeHit(damage, hitPoint, hitDirection);
     }

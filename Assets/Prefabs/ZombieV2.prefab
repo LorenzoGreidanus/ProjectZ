@@ -2381,7 +2381,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 2
+  food: {fileID: 8168792602585419463, guid: a5da7830e25941c46b30695473d3f2b3, type: 3}
   deathEffect: {fileID: 5494545926940093149, guid: 76537b9226cf43a4eb752fbf1d70e3f0, type: 3}
+  target: {fileID: 0}
   skinToChoose:
   - {fileID: 1548524070897702196}
   - {fileID: 1548524070897470936}
@@ -2412,6 +2414,7 @@ MonoBehaviour:
   - {fileID: 1548524070897459794}
   - {fileID: 1548524070897650464}
   - {fileID: 1548524070897692336}
+  targetVitals: {fileID: 0}
   damage: 1
 --- !u!1 &1548524070897678794
 GameObject:
