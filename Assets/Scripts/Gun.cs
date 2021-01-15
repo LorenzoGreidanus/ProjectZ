@@ -15,6 +15,10 @@ public class Gun : MonoBehaviour
     public int burstAmount;
     int burstShotsLeft;
 
+    public int gunCost;
+    public int gunIndex;
+    public int damage;
+
     bool isReloading;
     [SerializeField]
     int bulletsLeft;

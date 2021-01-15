@@ -35,13 +35,13 @@ public class Enemy : Vitals
     {
         if (GameObject.FindGameObjectWithTag("Player").transform != null)
         {
-            hasTarget = true;
-
             target = GameObject.FindGameObjectWithTag("Player").transform;
             targetVitals = target.GetComponent<Vitals>();
 
             myCollision = GetComponent<CapsuleCollider>().radius;
             targetCollision = GetComponent<CapsuleCollider>().radius;
+
+            hasTarget = true;
         }
 
         int skinIndex;
@@ -60,7 +60,7 @@ public class Enemy : Vitals
         if(hasTarget)
         {
             currentState = State.Chasing;
-            targetVitals.OnDeath += OnTargetDeath; //In Build gives Error.
+            targetVitals.OnDeath += OnTargetDeath; 
 
             StartCoroutine("UpdatePath");
         }
@@ -68,15 +68,16 @@ public class Enemy : Vitals
         StartCoroutine("UpdatePath");
     }
 
+    
     public void SetCharacteristics(float damage, float enemyHealth)
     {
         if (hasTarget)
         {
-            Debug.LogError(targetVitals);
             _ = Mathf.Ceil(targetVitals.startHealth / damage); //In Build gives Error.
         }
         startHealth = enemyHealth;
     }
+    
 
     public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
     {

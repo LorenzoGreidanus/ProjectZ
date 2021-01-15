@@ -7,6 +7,7 @@ public class GunController : MonoBehaviour
 {
     public Transform weaponLocation;
     public Gun startingGun;
+    public Gun[] allGuns;
     Gun equipedGun;
 
     private Animator anim;
@@ -14,13 +15,14 @@ public class GunController : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        if(startingGun != null)
+        if(allGuns != null)
         {
-            EquipWeapon(startingGun);
+            EquipWeapon(allGuns[0]);
             anim.SetInteger("WeaponType_int", 1);
         }
     }
-    public void EquipWeapon(Gun gunToEquip)
+
+    private void EquipWeapon(Gun gunToEquip)
     {
         if(equipedGun != null)
         {
@@ -28,6 +30,11 @@ public class GunController : MonoBehaviour
         }
         equipedGun = Instantiate(gunToEquip, weaponLocation.position, weaponLocation.rotation) as Gun;
         equipedGun.transform.parent = weaponLocation;
+    }
+
+    public void ShopGun(int weaponIndex)
+    {
+        EquipWeapon(allGuns[weaponIndex]);
     }
 
     public void OnMouseHold()

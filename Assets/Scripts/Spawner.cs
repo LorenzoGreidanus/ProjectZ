@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public wave[] waves;
+    public Wave[] waves;
     public Enemy enemy;
 
     public GameObject[] spawners;
 
-    wave currentWave;
+    Wave currentWave;
     int currentWaveNum;
 
     public UIManager manager;
@@ -63,7 +63,7 @@ public class Spawner : MonoBehaviour
     }
 
     [System.Serializable]
-    public class wave
+    public class Wave
     {
         public bool infiniteMode;
         public int enemyCount;
